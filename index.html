@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>MAHAR Digital Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        html { scroll-padding-top: 5.5rem; }
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s, color 0.3s; }
+        .font-serif-italic { font-family: 'Playfair Display', serif; font-style: italic; }
+        /* Bold serif tier names (STANDARD / PREMIUM / GOLD) */
+        .package-tier-title {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+        .card-shadow { box-shadow: 0 10px 50px -12px rgba(0, 0, 0, 0.05); }
+        .dark .card-shadow { box-shadow: 0 10px 50px -12px rgba(0, 0, 0, 0.5); }
+        /* Soft peach glow behind hero headline (screenshot reference) */
+        .hero-copy-glow { position: relative; isolation: isolate; }
+        .hero-copy-glow::before {
+            content: '';
+            position: absolute;
+            left: -15%;
+            top: -25%;
+            width: 130%;
+            height: 95%;
+            background: radial-gradient(ellipse 70% 60% at 40% 35%, rgba(255, 200, 170, 0.45) 0%, rgba(255, 230, 210, 0.15) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .dark .hero-copy-glow::before {
+            background: radial-gradient(ellipse 70% 60% at 40% 35%, rgba(249, 115, 22, 0.12) 0%, transparent 65%);
+        }
+        /* Warm glow from the right (services & plans block) */
+        .services-hero-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+        .services-hero-wrap::before {
+            content: '';
+            position: absolute;
+            right: -15%;
+            top: 0;
+            width: 85%;
+            height: 100%;
+            min-height: 22rem;
+            background: radial-gradient(ellipse 75% 85% at 82% 42%, rgba(255, 190, 155, 0.55) 0%, rgba(255, 220, 200, 0.22) 42%, transparent 68%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .dark .services-hero-wrap::before {
+            background: radial-gradient(ellipse 75% 85% at 82% 42%, rgba(234, 88, 12, 0.14) 0%, transparent 60%);
+        }
+        #portfolio-lightbox::backdrop {
+            background: rgba(0, 0, 0, 0.75);
+        }
+        .stack-grid > article {
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+        }
+        .stack-grid > article:hover {
+            transform: translateY(-6px);
+            border-color: rgba(249, 115, 22, 0.45);
+            box-shadow: 0 16px 36px -18px rgba(249, 115, 22, 0.45);
+        }
+        .stack-grid > article > div:first-child,
+        .stack-grid > article img {
+            transition: transform 220ms ease;
+        }
+        .stack-grid > article:hover > div:first-child {
+            transform: scale(1.06);
+        }
+        .stack-grid > article:hover img {
+            transform: scale(1.08);
+        }
+        .stack-grid > article h3 {
+            transition: color 220ms ease;
+        }
+        .stack-grid > article:hover h3 {
+            color: #ea580c;
+        }
+        .reviews-marquee {
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        }
+        .reviews-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: reviews-slide 42s linear infinite;
+        }
+        .js-left-scroll .reviews-track {
+            animation: none;
+            will-change: transform;
+        }
+        .reviews-marquee:hover .reviews-track {
+            animation-play-state: paused;
+        }
+        @keyframes reviews-slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(-50% - 0.75rem)); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reviews-track { animation: none; }
+            .reviews-marquee { overflow-x: auto; mask-image: none; }
+        }
+        .partners-marquee {
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+        }
+        .partners-track {
+            display: flex;
+            gap: 1.25rem;
+            width: max-content;
+            will-change: transform;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .partners-marquee.partners-marquee { overflow-x: auto; mask-image: none; -webkit-overflow-scrolling: touch; }
+            #partners-track article:nth-child(n + 6) { display: none; }
+            #partners-track { flex-wrap: wrap; justify-content: center; width: auto; max-width: 100%; }
+        }
+        @media (max-width: 767px) {
+            .mobile-touch-target { min-height: 44px; min-width: 44px; }
+        }
+        @media (max-width: 414px) {
+            .xr-nav-wrap {
+                padding-left: 0.9rem;
+                padding-right: 0.9rem;
+                padding-top: 0.65rem;
+                padding-bottom: 0.65rem;
+            }
+            .xr-brand-text {
+                font-size: 0.9rem;
+                max-width: 10.5rem;
+            }
+            .xr-contact-btn {
+                padding: 0.45rem 0.68rem;
+                font-size: 0.68rem;
+            }
+            .xr-section-pad {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#f7f7f5] dark:bg-[#0f0f0f] text-[#1a1a1a] dark:text-gray-100 antialiased pb-24">
+
+    <!-- 1. NAVIGATION -->
+    <nav class="fixed w-full bg-white/85 dark:bg-[#0f0f0f]/90 backdrop-blur-md z-50 border-b border-gray-100/80 dark:border-zinc-800">
+        <div class="xr-nav-wrap max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
+            <a href="#home" class="flex items-center gap-3 shrink-0 min-w-0 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
+                <span class="relative w-10 h-10 shrink-0 rounded-xl bg-[#0a0a0a] dark:bg-white flex items-center justify-center shadow-sm ring-1 ring-black/10 dark:ring-black/10 text-white dark:text-[#0a0a0a]" aria-hidden="true">
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 p-2" aria-hidden="true">
+                        <path d="M10 26.5V9.5L18 19l8-9.5v17" stroke="currentColor" stroke-width="2.35" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="27.75" cy="9.25" r="3.5" fill="#ea580c"/>
+                    </svg>
+                </span>
+                <span class="xr-brand-text font-bold text-base sm:text-lg tracking-tight truncate text-[#111] dark:text-white">MAHAR Digital Marketing Lad</span>
+            </a>
+
+            <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-400">
+                <a href="#home" class="text-black dark:text-white" data-i18n="nav.home">Home</a>
+                <a href="#services" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.services">Services</a>
+                <a href="#design" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.design">Design</a>
+                <a href="#tools" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.tools">Tools</a>
+                <a href="#faq" class="hover:text-black dark:hover:text-white transition-colors" data-i18n="nav.faq">FAQ</a>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <button type="button" id="mobile-menu-btn" class="mobile-touch-target md:hidden px-3 py-2 rounded-lg border border-gray-200 dark:border-zinc-700 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors" aria-expanded="false" aria-controls="mobile-menu">
+                    Menu
+                </button>
+                <a href="contact.html" class="xr-contact-btn hidden md:inline-flex bg-black dark:bg-zinc-100 dark:text-black text-white text-xs font-semibold px-4 sm:px-5 py-2.5 rounded-full hover:opacity-90 transition-opacity" data-i18n="nav.contact">Contact</a>
+                <div class="flex items-center gap-1.5 text-[11px] font-bold tracking-wide">
+                    <button type="button" id="lang-en" class="mobile-touch-target w-9 h-9 rounded-full bg-black text-white flex items-center justify-center dark:bg-white dark:text-black ring-2 ring-transparent transition">EN</button>
+                    <button type="button" id="lang-my" class="mobile-touch-target w-9 h-9 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-zinc-800 flex items-center justify-center transition">MY</button>
+                </div>
+                <button type="button" id="theme-toggle" aria-label="Toggle dark mode" class="mobile-touch-target p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden border-t border-gray-200/80 dark:border-zinc-800 bg-white/95 dark:bg-[#0f0f0f]/95 backdrop-blur px-4 py-4 max-h-[min(70vh,28rem)] overflow-y-auto overscroll-contain">
+            <div class="grid grid-cols-1 gap-1 text-sm font-medium">
+                <a href="#home" class="rounded-lg px-3 py-3 hover:bg-gray-100 dark:hover:bg-zinc-800" data-i18n="nav.home">Home</a>
+                <a href="#services" class="rounded-lg px-3 py-3 hover:bg-gray-100 dark:hover:bg-zinc-800" data-i18n="nav.services">Services</a>
+                <a href="#design" class="rounded-lg px-3 py-3 hover:bg-gray-100 dark:hover:bg-zinc-800" data-i18n="nav.design">Design</a>
+                <a href="#tools" class="rounded-lg px-3 py-3 hover:bg-gray-100 dark:hover:bg-zinc-800" data-i18n="nav.tools">Tools</a>
+                <a href="#faq" class="rounded-lg px-3 py-3 hover:bg-gray-100 dark:hover:bg-zinc-800" data-i18n="nav.faq">FAQ</a>
+                <a href="contact.html" class="rounded-lg px-3 py-3 bg-black text-white dark:bg-zinc-100 dark:text-black text-center" data-i18n="nav.contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <div id="mobile-menu-backdrop" class="hidden md:hidden fixed inset-0 z-40 bg-black/45" aria-hidden="true"></div>
+
+    <!-- 2. HERO -->
+    <section id="home" class="scroll-mt-28 xr-section-pad pt-28 sm:pt-32 pb-16 sm:pb-24 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="hero-copy-glow pt-4">
+            <span class="text-orange-500 font-bold tracking-[0.25em] uppercase text-[11px]" data-i18n="hero.eyebrow">Digital Marketing · Social-First Growth</span>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mt-6 leading-[1.02] text-[#111] dark:text-white max-w-xl">
+                <span data-i18n="hero.title">Grow your brand where your audience scrolls.</span>
+            </h1>
+            <p class="mt-8 text-gray-500 dark:text-gray-400 text-base sm:text-lg leading-relaxed max-w-lg" data-i18n="hero.desc">
+                MAHAR Digital Marketing plans and runs Facebook and TikTok campaigns — from branding assets and monthly content to video production and performance reporting. Edit all copy from the admin panel.
+            </p>
+            <div class="mt-10 flex flex-wrap gap-4">
+                <button type="button" class="bg-[#111] dark:bg-white dark:text-black text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-black/10 dark:shadow-none hover:opacity-95 transition-opacity" data-i18n="hero.download">Download profile (PDF)</button>
+                <button type="button" class="border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-[#111] dark:text-white px-8 py-3.5 rounded-full font-bold text-sm hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors" data-i18n="hero.view">View services</button>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-4">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;w=800&amp;q=80" class="rounded-[2rem] sm:rounded-[2.5rem] w-full h-52 sm:h-64 object-cover" alt="Abstract fluid shapes — creative brand energy" loading="eager" decoding="async">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=800&amp;q=80" class="rounded-[2rem] sm:rounded-[2.5rem] w-full h-52 sm:h-64 object-cover card-shadow border border-gray-100 dark:border-zinc-800" alt="Marketing team collaborating in a studio" loading="lazy" decoding="async">
+            </div>
+            <div class="space-y-4 pt-6 sm:pt-12">
+                <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&amp;fit=crop&amp;w=800&amp;q=80" class="rounded-[2rem] sm:rounded-[2.5rem] w-full h-52 sm:h-64 object-cover" alt="London tote bags — retail branding inspiration" loading="lazy" decoding="async">
+                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" class="rounded-[2rem] sm:rounded-[2.5rem] w-full h-52 sm:h-64 object-cover object-top" alt="Hands reaching together — partnership and collaboration" loading="lazy" decoding="async">
+            </div>
+        </div>
+    </section>
+
+    <!-- 3–4. SERVICES & PLANS + BRANDING PACKAGES (scroll section) -->
+    <section id="services" class="scroll-mt-28 pb-16 md:pb-24">
+        <div class="services-hero-wrap bg-[#f7f7f5] dark:bg-[#0f0f0f]">
+            <div class="relative z-10 max-w-3xl mx-auto text-center px-6 pt-16 pb-14 md:pt-20 md:pb-16">
+                <span class="text-orange-500 font-bold tracking-[0.28em] uppercase text-[11px]" data-i18n="services.eyebrow">Mahar Digital Marketing</span>
+                <h2 class="text-4xl sm:text-5xl font-extrabold mt-5 text-[#111] dark:text-white tracking-tight" data-i18n="services.title">Digital Marketing Services &amp; Plans</h2>
+                <p class="mt-6 text-gray-500 dark:text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto" data-i18n="services.desc">
+                    Facebook branding, monthly social management, and TikTok video packages — built for brands that want measurable reach and standout creative.
+                </p>
+                <div class="mt-10 flex flex-wrap justify-center gap-3 sm:gap-4">
+                    <button type="button" class="px-8 py-3 rounded-full text-[11px] font-bold uppercase tracking-wide bg-white dark:bg-zinc-900 text-[#111] dark:text-white border border-gray-200 dark:border-zinc-700 shadow-sm hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors" data-i18n="services.facebook">Facebook</button>
+                    <button type="button" class="px-8 py-3 rounded-full text-[11px] font-bold uppercase tracking-wide bg-white dark:bg-zinc-900 text-[#111] dark:text-white border border-gray-200 dark:border-zinc-700 shadow-sm hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors" data-i18n="services.tiktok">TikTok</button>
+                    <button type="button" class="px-10 py-3 rounded-full text-[11px] font-bold uppercase tracking-wide text-white bg-gradient-to-r from-orange-500 to-red-500 shadow-lg shadow-orange-200/80 dark:shadow-orange-900/30 hover:opacity-95 transition-opacity" data-i18n="services.cta">Get Started</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-400 dark:text-gray-500 text-sm font-medium">(Facebook)</p>
+            <h3 class="text-2xl sm:text-3xl font-extrabold mt-3 text-[#111] dark:text-white">Facebook branding &amp; monthly marketing</h3>
+            <p class="text-orange-500 font-bold tracking-[0.28em] uppercase text-[11px] mt-12 mb-10 md:mb-12">Branding &amp; Design Packages</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 px-6 max-w-7xl mx-auto pt-2">
+            <!-- Standard Package -->
+            <div class="bg-white dark:bg-zinc-900 p-12 md:p-14 rounded-[2.5rem] text-center card-shadow border border-gray-100 dark:border-zinc-800">
+                <h4 class="package-tier-title text-3xl sm:text-4xl uppercase text-[#111] dark:text-white">Standard</h4>
+                <p class="font-serif-italic text-orange-500 dark:text-orange-400 text-2xl mt-2 mb-10 leading-none">Package</p>
+                <ul class="text-left space-y-4 text-sm text-gray-600 dark:text-gray-400 font-medium">
+                    <li class="border-b border-gray-100 dark:border-zinc-800 pb-3">Option — 1</li>
+                    <li class="border-b border-gray-100 dark:border-zinc-800 pb-3">Revision — 1</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> FB Profile</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Cover Photo</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Business Card design</li>
+                </ul>
+            </div>
+            <!-- Premium Package -->
+            <div class="bg-white dark:bg-zinc-900 p-12 md:p-14 rounded-[2.5rem] text-center card-shadow border border-gray-100 dark:border-zinc-800">
+                <h4 class="package-tier-title text-3xl sm:text-4xl uppercase text-[#111] dark:text-white">Premium</h4>
+                <p class="font-serif-italic text-orange-500 dark:text-orange-400 text-2xl mt-2 mb-10 leading-none">Package</p>
+                <ul class="text-left space-y-4 text-sm text-gray-600 dark:text-gray-400 font-medium">
+                    <li class="border-b border-gray-100 dark:border-zinc-800 pb-3">Option — 2</li>
+                    <li class="border-b border-gray-100 dark:border-zinc-800 pb-3">Revision — 2</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> FB Profile</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Cover Photo</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Business Card design</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Letter Head design</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Brand Pattern</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Logo Grid</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Logo Guide</li>
+                </ul>
+            </div>
+            <!-- Gold Package -->
+            <div class="bg-white dark:bg-zinc-900 p-12 md:p-14 rounded-[2.5rem] text-center card-shadow border border-gray-100 dark:border-zinc-800">
+                <h4 class="package-tier-title text-3xl sm:text-4xl uppercase text-[#111] dark:text-white">Gold</h4>
+                <p class="font-serif-italic text-orange-500 dark:text-orange-400 text-2xl mt-2 mb-10 leading-none">Package</p>
+                <ul class="text-left space-y-4 text-sm text-gray-600 dark:text-gray-400 font-medium">
+                    <li class="border-b border-gray-100 dark:border-zinc-800 pb-3">Option — 1</li>
+                    <li class="border-b border-gray-100 dark:border-zinc-800 pb-3">Revision — 2</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> FB Profile</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Cover Photo</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Business Card design</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Letter Head design</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Brand Pattern</li>
+                    <li><span class="text-orange-500 mr-2 font-bold">•</span> Logo Grid</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to top -->
+    <button type="button" id="scroll-top" class="fixed z-[60] flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-[#111] shadow-lg transition hover:shadow-xl dark:border-zinc-600 dark:bg-zinc-900 dark:text-white bottom-[max(1.5rem,env(safe-area-inset-bottom))] right-[max(1.5rem,env(safe-area-inset-right))]" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <!-- 5. MONTHLY MARKETING & CONTENT -->
+    <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-12 md:mb-14">
+            <span class="text-orange-500 font-bold tracking-[0.28em] uppercase text-[11px]">Monthly Marketing &amp; Content</span>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Basic -->
+            <div class="bg-white dark:bg-zinc-900 p-10 md:p-12 rounded-[2.5rem] card-shadow border border-gray-100 dark:border-zinc-800">
+                <h3 class="text-2xl font-bold text-center text-[#111] dark:text-white">Basic</h3>
+                <div class="text-center my-6">
+                    <span class="text-4xl font-extrabold text-orange-500">400,000</span>
+                    <span class="text-gray-500 dark:text-gray-400 font-bold ml-1.5 text-sm uppercase tracking-wide">MMK</span>
+                </div>
+                <div class="h-px bg-gray-100 dark:bg-zinc-800 mb-6"></div>
+                <ul class="space-y-3.5 text-sm text-gray-600 dark:text-gray-400 font-medium leading-snug">
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> 5 Professional Posts / Month</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Monthly Marketing Plan &amp; Strategy</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Content Calendar</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Media Buying Support (FOC)</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Standard Reporting</li>
+                </ul>
+            </div>
+            <!-- Silver -->
+            <div class="bg-white dark:bg-zinc-900 p-10 md:p-12 rounded-[2.5rem] card-shadow border border-gray-100 dark:border-zinc-800">
+                <h3 class="text-2xl font-bold text-center text-[#111] dark:text-white">Silver</h3>
+                <div class="text-center my-6">
+                    <span class="text-4xl font-extrabold text-orange-500">800,000</span>
+                    <span class="text-gray-500 dark:text-gray-400 font-bold ml-1.5 text-sm uppercase tracking-wide">Ks</span>
+                </div>
+                <div class="h-px bg-gray-100 dark:bg-zinc-800 mb-6"></div>
+                <ul class="space-y-3.5 text-sm text-gray-600 dark:text-gray-400 font-medium leading-snug">
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> 10 Professional Posts / Month</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Marketing Plan &amp; Strategy</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Content Calendar</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> 1 Seasonal Post (FOC)</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Initial Comment Reply</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> 2 Competitors Analysis</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Advanced Media Buying (FOC) — Custom Audience Building</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Standard Reporting</li>
+                </ul>
+            </div>
+            <!-- Gold -->
+            <div class="bg-white dark:bg-zinc-900 p-10 md:p-12 rounded-[2.5rem] card-shadow border border-gray-100 dark:border-zinc-800">
+                <h3 class="text-2xl font-bold text-center text-[#111] dark:text-white">Gold</h3>
+                <div class="text-center my-6">
+                    <span class="text-4xl font-extrabold text-orange-500">1,200,000</span>
+                    <span class="text-gray-500 dark:text-gray-400 font-bold ml-1.5 text-sm uppercase tracking-wide">MMK</span>
+                </div>
+                <div class="h-px bg-gray-100 dark:bg-zinc-800 mb-6"></div>
+                <ul class="space-y-3.5 text-sm text-gray-600 dark:text-gray-400 font-medium leading-snug">
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> 15 Professional Posts / Month (includes 1 motion graphic video)</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Marketing Plan &amp; Strategy</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Content Calendar</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> 2 Seasonal Posts (FOC)</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Profile &amp; Cover Photo (FOC)</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Initial Comment Reply</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> 5 Competitors Analysis</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Advanced Media Buying (FOC) — Custom Audience Building</li>
+                    <li class="flex gap-2"><span class="text-orange-500 font-bold shrink-0">•</span> Standard Reporting</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. TikTok video production comparison -->
+    <section class="py-16 md:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+        <header class="text-center mb-10 md:mb-12">
+            <p class="text-gray-400 dark:text-gray-500 text-sm font-medium mb-3">(TikTok)</p>
+            <h2 class="text-3xl sm:text-4xl font-bold text-[#111] dark:text-white tracking-tight px-2">TikTok video production — 10-video plans</h2>
+            <p class="mt-4 text-gray-500 dark:text-gray-400 text-base max-w-2xl mx-auto leading-relaxed">
+                Scripts, production tiers, editing, and optional media buying. Amounts in MMK unless noted.
+            </p>
+        </header>
+
+        <div class="overflow-x-auto rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm card-shadow">
+            <table class="w-full min-w-[720px] text-sm border-collapse">
+                <thead>
+                    <tr class="bg-gray-100 dark:bg-zinc-800 text-[#111] dark:text-gray-100">
+                        <th scope="col" class="text-left font-semibold py-4 px-4 sm:px-5 rounded-tl-2xl">Service detail</th>
+                        <th scope="col" class="text-center font-semibold py-4 px-3">Plan A</th>
+                        <th scope="col" class="text-center font-semibold py-4 px-3">Plan B</th>
+                        <th scope="col" class="text-center font-semibold py-4 px-3">Plan C</th>
+                        <th scope="col" class="text-center font-semibold py-4 px-3 rounded-tr-2xl">Plan D</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700 dark:text-gray-300">
+                    <tr class="border-b border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                        <th scope="row" class="text-left font-medium py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Account settings aligned with your business</th>
+                        <td class="text-center py-3.5 px-2"><span class="tik-ok" aria-label="Included"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+                        <td class="text-center py-3.5 px-2"><span class="tik-ok" aria-label="Included"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+                        <td class="text-center py-3.5 px-2"><span class="tik-ok" aria-label="Included"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+                        <td class="text-center py-3.5 px-2"><span class="tik-ok" aria-label="Included"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-zinc-800 bg-gray-50/60 dark:bg-zinc-800/40">
+                        <th scope="row" class="text-left font-medium py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Profile photo styling for your brand</th>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-zinc-800 bg-[#FFFBEB] dark:bg-amber-950/25">
+                        <th scope="row" class="text-left font-medium py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Content idea &amp; strategy</th>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                        <th scope="row" class="text-left font-medium py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Engaging script writing</th>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-zinc-800 bg-gray-50/60 dark:bg-zinc-800/40">
+                        <th scope="row" class="text-left font-medium py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Video production</th>
+                        <td class="text-center py-3.5 px-2 text-gray-400 dark:text-gray-500">—</td>
+                        <td class="text-center py-3.5 px-2">Smartphone shoot</td>
+                        <td class="text-center py-3.5 px-2">Pro entry camera</td>
+                        <td class="text-center py-3.5 px-2">Pro videographer + camera</td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                        <th scope="row" class="text-left font-medium py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Professional editing</th>
+                        <td class="text-center py-3.5 px-2">Yes</td>
+                        <td class="text-center py-3.5 px-2">Yes</td>
+                        <td class="text-center py-3.5 px-2">Yes</td>
+                        <td class="text-center py-3.5 px-2">Pro editor</td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-zinc-800 bg-gray-50/60 dark:bg-zinc-800/40">
+                        <th scope="row" class="text-left font-medium py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Talent (on-screen)</th>
+                        <td class="text-center py-3.5 px-2 text-gray-400 dark:text-gray-500">—</td>
+                        <td class="text-center py-3.5 px-2 text-gray-400 dark:text-gray-500">—</td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                        <th scope="row" class="text-left font-medium py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Hashtag &amp; posting</th>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-zinc-800 bg-gray-50/60 dark:bg-zinc-800/40">
+                        <th scope="row" class="text-left font-medium py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Media buying (sales / awareness)</th>
+                        <td class="text-center py-3.5 px-2 text-gray-400 dark:text-gray-500">—</td>
+                        <td class="text-center py-3.5 px-2 text-gray-400 dark:text-gray-500">—</td>
+                        <td class="text-center py-3.5 px-2 text-gray-400 dark:text-gray-500">—</td>
+                        <td class="text-center py-3.5 px-2 text-sm">$3 / video add-on</td>
+                    </tr>
+                    <tr class="border-b border-gray-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                        <th scope="row" class="text-left font-medium py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Monthly insight report</th>
+                        <td class="text-center py-3.5 px-2 text-gray-400 dark:text-gray-500">—</td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                        <td class="text-center py-3.5 px-2"><svg class="w-5 h-5 text-emerald-500 mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td>
+                    </tr>
+                    <tr class="border-b border-orange-100 dark:border-zinc-700 bg-orange-50/90 dark:bg-orange-950/30">
+                        <th scope="row" class="text-left font-semibold py-3.5 px-4 sm:px-5 text-[#111] dark:text-white">Per video (MMK)</th>
+                        <td class="text-center py-3.5 px-2 font-medium tabular-nums">80,000</td>
+                        <td class="text-center py-3.5 px-2 font-medium tabular-nums">120,000</td>
+                        <td class="text-center py-3.5 px-2 font-medium tabular-nums">180,000</td>
+                        <td class="text-center py-3.5 px-2 font-medium tabular-nums">250,000</td>
+                    </tr>
+                    <tr class="bg-orange-50 dark:bg-orange-950/35 rounded-b-2xl">
+                        <th scope="row" class="text-left font-bold py-4 px-4 sm:px-5 text-[#111] dark:text-white rounded-bl-2xl">Total for 10 videos (MMK)</th>
+                        <td class="text-center py-4 px-2 font-bold text-[#111] dark:text-white tabular-nums">800,000</td>
+                        <td class="text-center py-4 px-2 font-bold text-[#111] dark:text-white tabular-nums">1,200,000</td>
+                        <td class="text-center py-4 px-2 font-bold text-[#111] dark:text-white tabular-nums">1,800,000</td>
+                        <td class="text-center py-4 px-2 font-bold text-[#111] dark:text-white tabular-nums rounded-br-2xl">2,500,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8 md:mt-10 max-w-xl mx-auto px-4">
+            Minimum order: packages start from 10 videos.
+        </p>
+        <div class="flex justify-center mt-6">
+            <button type="button" class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border-2 border-[#111] dark:border-white bg-white dark:bg-zinc-900 text-[#111] dark:text-white font-bold text-sm shadow-sm hover:bg-gray-50 dark:hover:bg-zinc-800 transition-colors">
+                <span class="text-lg leading-none" aria-hidden="true">↓</span>
+                Download TikTok plan (PDF)
+            </button>
+        </div>
+    </section>
+
+    <!-- 7. Selected design -->
+    <section id="design" class="scroll-mt-28 py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-zinc-800">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-14">
+            <div class="max-w-xl">
+                <h2 class="text-3xl sm:text-4xl font-bold text-[#111] dark:text-white tracking-tight">Selected design</h2>
+                <p class="mt-3 text-gray-500 dark:text-gray-400 text-base leading-relaxed">
+                    Campaigns, social content, and brand systems we have shipped — click a cover to zoom or open the full case study.
+                </p>
+            </div>
+            <a href="#" class="shrink-0 text-orange-500 font-semibold text-sm hover:text-orange-600 transition-colors inline-flex items-center gap-1">All designs <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            <article class="flex flex-col">
+                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-800 card-shadow group">
+                    <img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&amp;fit=crop&amp;w=900&amp;q=80" width="900" height="675" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" alt="Gradient brand artwork for Aurora Coffee identity">
+                    <button type="button" class="portfolio-zoom absolute top-3 right-3 w-10 h-10 rounded-full bg-black/40 hover:bg-black/55 backdrop-blur-sm flex items-center justify-center text-white transition-colors" aria-label="Zoom: Aurora Coffee identity" data-lightbox-src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" data-lightbox-alt="Aurora Coffee identity — brand gradient">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                    </button>
+                </div>
+                <p class="text-orange-500 font-bold tracking-[0.2em] uppercase text-[11px] mt-5">Branding</p>
+                <h3 class="text-lg font-bold text-[#111] dark:text-white mt-1.5">Aurora Coffee identity</h3>
+                <a href="#" class="text-sm text-gray-500 dark:text-gray-400 mt-2 inline-flex items-center gap-1 hover:text-orange-500 transition-colors">Design <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="flex flex-col">
+                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-800 card-shadow group">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&amp;fit=crop&amp;w=900&amp;q=80" width="900" height="675" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" alt="Night city lights — Pulse festival campaign">
+                    <button type="button" class="portfolio-zoom absolute top-3 right-3 w-10 h-10 rounded-full bg-black/40 hover:bg-black/55 backdrop-blur-sm flex items-center justify-center text-white transition-colors" aria-label="Zoom: Pulse festival campaign" data-lightbox-src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" data-lightbox-alt="Pulse festival campaign — night city">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                    </button>
+                </div>
+                <p class="text-orange-500 font-bold tracking-[0.2em] uppercase text-[11px] mt-5">Campaign</p>
+                <h3 class="text-lg font-bold text-[#111] dark:text-white mt-1.5">Pulse festival campaign</h3>
+                <a href="#" class="text-sm text-gray-500 dark:text-gray-400 mt-2 inline-flex items-center gap-1 hover:text-orange-500 transition-colors">Design <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="flex flex-col">
+                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-800 card-shadow group">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&amp;fit=crop&amp;w=900&amp;q=80" width="900" height="675" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" alt="Urban street — Northline editorial system">
+                    <button type="button" class="portfolio-zoom absolute top-3 right-3 w-10 h-10 rounded-full bg-black/40 hover:bg-black/55 backdrop-blur-sm flex items-center justify-center text-white transition-colors" aria-label="Zoom: Northline editorial system" data-lightbox-src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" data-lightbox-alt="Northline editorial — city street">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                    </button>
+                </div>
+                <p class="text-orange-500 font-bold tracking-[0.2em] uppercase text-[11px] mt-5">Editorial</p>
+                <h3 class="text-lg font-bold text-[#111] dark:text-white mt-1.5">Northline editorial system</h3>
+                <a href="#" class="text-sm text-gray-500 dark:text-gray-400 mt-2 inline-flex items-center gap-1 hover:text-orange-500 transition-colors">Design <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="flex flex-col">
+                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-800 card-shadow group">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=900&amp;q=80" width="900" height="675" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" alt="Analytics dashboard — Kite finance app UI">
+                    <button type="button" class="portfolio-zoom absolute top-3 right-3 w-10 h-10 rounded-full bg-black/40 hover:bg-black/55 backdrop-blur-sm flex items-center justify-center text-white transition-colors" aria-label="Zoom: Kite finance app UI" data-lightbox-src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" data-lightbox-alt="Kite finance — analytics UI">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                    </button>
+                </div>
+                <p class="text-orange-500 font-bold tracking-[0.2em] uppercase text-[11px] mt-5">Digital</p>
+                <h3 class="text-lg font-bold text-[#111] dark:text-white mt-1.5">Kite finance app UI</h3>
+                <a href="#" class="text-sm text-gray-500 dark:text-gray-400 mt-2 inline-flex items-center gap-1 hover:text-orange-500 transition-colors">Design <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="flex flex-col">
+                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-800 card-shadow group">
+                    <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&amp;fit=crop&amp;w=900&amp;q=80" width="900" height="675" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" alt="Skincare product flat lay — Loom packaging">
+                    <button type="button" class="portfolio-zoom absolute top-3 right-3 w-10 h-10 rounded-full bg-black/40 hover:bg-black/55 backdrop-blur-sm flex items-center justify-center text-white transition-colors" aria-label="Zoom: Loom skincare packaging" data-lightbox-src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" data-lightbox-alt="Loom skincare packaging">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                    </button>
+                </div>
+                <p class="text-orange-500 font-bold tracking-[0.2em] uppercase text-[11px] mt-5">Packaging</p>
+                <h3 class="text-lg font-bold text-[#111] dark:text-white mt-1.5">Loom skincare packaging</h3>
+                <a href="#" class="text-sm text-gray-500 dark:text-gray-400 mt-2 inline-flex items-center gap-1 hover:text-orange-500 transition-colors">Design <span aria-hidden="true">→</span></a>
+            </article>
+
+            <article class="flex flex-col">
+                <div class="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 dark:bg-zinc-800 card-shadow group">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=900&amp;q=80" width="900" height="675" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" alt="Global network view from space — Signal typographic poster campaign">
+                    <button type="button" class="portfolio-zoom absolute top-3 right-3 w-10 h-10 rounded-full bg-black/40 hover:bg-black/55 backdrop-blur-sm flex items-center justify-center text-white transition-colors" aria-label="Zoom: Signal typographic poster" data-lightbox-src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" data-lightbox-alt="Signal typographic poster — global network visual">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+                    </button>
+                </div>
+                <p class="text-orange-500 font-bold tracking-[0.2em] uppercase text-[11px] mt-5">Print</p>
+                <h3 class="text-lg font-bold text-[#111] dark:text-white mt-1.5">Signal typographic poster</h3>
+                <a href="#" class="text-sm text-gray-500 dark:text-gray-400 mt-2 inline-flex items-center gap-1 hover:text-orange-500 transition-colors">Design <span aria-hidden="true">→</span></a>
+            </article>
+        </div>
+    </section>
+
+    <!-- 8. Why choose us -->
+    <section id="tools" class="scroll-mt-28 py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-zinc-800">
+        <p class="text-orange-500 font-bold tracking-[0.22em] uppercase text-sm md:text-base">Why us</p>
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#111] dark:text-white mt-4 md:mt-5 tracking-tight">Why choose us</h2>
+        <p class="mt-5 md:mt-6 text-gray-500 dark:text-gray-400 max-w-3xl text-lg sm:text-xl leading-relaxed">
+            Data-informed campaigns, creative that converts, and reporting you can trust — built for brands growing on Facebook, TikTok, and beyond.
+        </p>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mt-14 md:mt-16">
+            <div class="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-3xl p-8 md:p-9 card-shadow">
+                <div class="w-16 h-16 md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-orange-100 dark:bg-orange-500/15 flex items-center justify-center text-orange-500 mb-6 md:mb-7" aria-hidden="true">
+                    <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="1.65" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/></svg>
+                </div>
+                <h3 class="font-bold text-[#111] dark:text-white text-xl sm:text-2xl leading-snug">Performance-led planning</h3>
+                <p class="mt-4 text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed">We set clear KPIs for reach, engagement, and conversions before spend goes live — so every boost has a reason.</p>
+            </div>
+
+            <div class="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-3xl p-8 md:p-9 card-shadow">
+                <div class="w-16 h-16 md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-orange-100 dark:bg-orange-500/15 flex items-center justify-center gap-2 text-orange-600 dark:text-orange-400 mb-6 md:mb-7" title="Facebook &amp; TikTok" aria-hidden="true">
+                    <svg class="w-8 h-8 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    <svg class="w-8 h-8 shrink-0 -mb-0.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
+                </div>
+                <h3 class="font-bold text-[#111] dark:text-white text-xl sm:text-2xl leading-snug">Platform-native creative</h3>
+                <p class="mt-4 text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed">Content is shaped for <span class="font-bold text-[#111] dark:text-gray-100">Facebook</span> feeds and <span class="font-bold text-[#111] dark:text-gray-100">TikTok</span> formats — aspect ratios, hooks, and motion that fit each channel.</p>
+            </div>
+
+            <div class="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-3xl p-8 md:p-9 card-shadow">
+                <div class="w-16 h-16 md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-orange-100 dark:bg-orange-500/15 flex items-center justify-center text-orange-500 mb-6 md:mb-7" aria-hidden="true">
+                    <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="1.65" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-linecap="round"/><circle cx="12" cy="12" r="5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg>
+                </div>
+                <h3 class="font-bold text-[#111] dark:text-white text-xl sm:text-2xl leading-snug">Transparent reporting</h3>
+                <p class="mt-4 text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed">Monthly insight summaries and campaign snapshots you can share with stakeholders — no black boxes.</p>
+            </div>
+
+            <div class="bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-3xl p-8 md:p-9 card-shadow">
+                <div class="w-16 h-16 md:w-[4.5rem] md:h-[4.5rem] rounded-2xl bg-orange-100 dark:bg-orange-500/15 flex items-center justify-center text-orange-500 mb-6 md:mb-7" aria-hidden="true">
+                    <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="1.65" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+                <h3 class="font-bold text-[#111] dark:text-white text-xl sm:text-2xl leading-snug">End-to-end campaigns</h3>
+                <p class="mt-4 text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed">From brand assets and calendars to paid support and video production — one team aligned on your growth goals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Creative & marketing stack -->
+    <section id="faq" class="scroll-mt-28 py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-zinc-800">
+        <p class="text-orange-500 font-bold tracking-[0.28em] uppercase text-sm md:text-base">Stack</p>
+        <h2 class="text-4xl sm:text-5xl font-bold text-[#111] dark:text-white mt-4 md:mt-5 tracking-tight">Creative &amp; marketing stack</h2>
+        <p class="mt-5 md:mt-6 text-lg sm:text-xl text-gray-500 dark:text-gray-400 max-w-3xl leading-relaxed">
+            Design, motion, and analytics tools we use to produce content, measure performance, and hand off assets cleanly.
+        </p>
+
+        <div class="stack-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14 md:mt-16">
+            <article class="flex gap-5 sm:gap-6 items-start bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 sm:p-8 card-shadow">
+                <div class="w-[4.75rem] h-[4.75rem] sm:w-20 sm:h-20 shrink-0 rounded-2xl bg-[#FF7262]/12 dark:bg-orange-950/40 flex items-center justify-center p-3 sm:p-3.5" aria-hidden="true">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/figma.svg" width="52" height="52" alt="" class="w-11 h-11 sm:w-12 sm:h-12 brightness-0 dark:invert">
+                </div>
+                <div class="min-w-0 pt-0.5">
+                    <p class="text-orange-500 font-bold tracking-[0.18em] uppercase text-xs sm:text-sm">UI · PROTOTYPING</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-[#111] dark:text-white mt-2">Figma</h3>
+                    <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1 text-base text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors font-medium">Official site <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+            <article class="flex gap-5 sm:gap-6 items-start bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 sm:p-8 card-shadow">
+                <div class="w-[4.75rem] h-[4.75rem] sm:w-20 sm:h-20 shrink-0 rounded-2xl bg-[#FF9A00]/15 dark:bg-amber-950/35 flex items-center justify-center p-3 sm:p-3.5" aria-hidden="true">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/adobeillustrator.svg" width="52" height="52" alt="" class="w-11 h-11 sm:w-12 sm:h-12 brightness-0 dark:invert opacity-95">
+                </div>
+                <div class="min-w-0 pt-0.5">
+                    <p class="text-orange-500 font-bold tracking-[0.18em] uppercase text-xs sm:text-sm">VECTOR · IDENTITY</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-[#111] dark:text-white mt-2">Adobe Illustrator</h3>
+                    <a href="https://www.adobe.com/products/illustrator.html" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1 text-base text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors font-medium">Official site <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+            <article class="flex gap-5 sm:gap-6 items-start bg-white dark:bg-zinc-900 rounded-2xl p-6 sm:p-8 border-2 border-orange-200 dark:border-orange-500/35 ring-2 ring-orange-100/90 dark:ring-orange-900/40 shadow-xl shadow-orange-100/70 dark:shadow-orange-950/25">
+                <div class="w-[4.75rem] h-[4.75rem] sm:w-20 sm:h-20 shrink-0 rounded-2xl bg-[#31A8FF]/15 dark:bg-sky-950/40 flex items-center justify-center p-3 sm:p-3.5" aria-hidden="true">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/adobephotoshop.svg" width="52" height="52" alt="" class="w-11 h-11 sm:w-12 sm:h-12 brightness-0 dark:invert opacity-95">
+                </div>
+                <div class="min-w-0 pt-0.5">
+                    <p class="text-orange-500 font-bold tracking-[0.18em] uppercase text-xs sm:text-sm">PHOTO · COMPOSITING</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-[#111] dark:text-white mt-2">Adobe Photoshop</h3>
+                    <a href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1 text-base text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors font-medium">Official site <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+            <article class="flex gap-5 sm:gap-6 items-start bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 sm:p-8 card-shadow">
+                <div class="w-[4.75rem] h-[4.75rem] sm:w-20 sm:h-20 shrink-0 rounded-2xl bg-[#9999FF]/20 dark:bg-violet-950/35 flex items-center justify-center p-3 sm:p-3.5" aria-hidden="true">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/adobeaftereffects.svg" width="52" height="52" alt="" class="w-11 h-11 sm:w-12 sm:h-12 brightness-0 dark:invert opacity-95">
+                </div>
+                <div class="min-w-0 pt-0.5">
+                    <p class="text-orange-500 font-bold tracking-[0.18em] uppercase text-xs sm:text-sm">MOTION · VIDEO</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-[#111] dark:text-white mt-2">Adobe After Effects</h3>
+                    <a href="https://www.adobe.com/products/aftereffects.html" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1 text-base text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors font-medium">Official site <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+            <article class="flex gap-5 sm:gap-6 items-start bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 sm:p-8 card-shadow">
+                <div class="w-[4.75rem] h-[4.75rem] sm:w-20 sm:h-20 shrink-0 rounded-2xl bg-[#E87D0D]/15 dark:bg-orange-950/40 flex items-center justify-center p-3 sm:p-3.5" aria-hidden="true">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/blender.svg" width="52" height="52" alt="" class="w-11 h-11 sm:w-12 sm:h-12 brightness-0 dark:invert opacity-95">
+                </div>
+                <div class="min-w-0 pt-0.5">
+                    <p class="text-orange-500 font-bold tracking-[0.18em] uppercase text-xs sm:text-sm">3D · RENDERING</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-[#111] dark:text-white mt-2">Blender</h3>
+                    <a href="https://www.blender.org" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1 text-base text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors font-medium">Official site <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+
+            <article class="flex gap-5 sm:gap-6 items-start bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-6 sm:p-8 card-shadow">
+                <div class="w-[4.75rem] h-[4.75rem] sm:w-20 sm:h-20 shrink-0 rounded-2xl bg-[#F7B500]/18 dark:bg-amber-950/35 flex items-center justify-center p-3 sm:p-3.5" aria-hidden="true">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@11/icons/sketch.svg" width="52" height="52" alt="" class="w-11 h-11 sm:w-12 sm:h-12 brightness-0 dark:invert opacity-95">
+                </div>
+                <div class="min-w-0 pt-0.5">
+                    <p class="text-orange-500 font-bold tracking-[0.18em] uppercase text-xs sm:text-sm">UI · MACOS</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-[#111] dark:text-white mt-2">Sketch</h3>
+                    <a href="https://www.sketch.com" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1 text-base text-gray-500 dark:text-gray-400 hover:text-orange-500 transition-colors font-medium">Official site <span aria-hidden="true">→</span></a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 10. Customer reviews & partners -->
+    <section id="testimonials" class="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-zinc-800">
+        <header class="text-center max-w-3xl mx-auto">
+            <p class="text-orange-500 font-bold tracking-[0.28em] uppercase text-sm md:text-base" data-i18n="testimonials.eyebrow">Testimonials</p>
+            <h2 class="text-4xl sm:text-5xl font-bold text-[#111] dark:text-white mt-4 tracking-tight" data-i18n="testimonials.title">Customer reviews</h2>
+            <p class="mt-5 text-lg sm:text-xl text-gray-500 dark:text-gray-400 leading-relaxed" data-i18n="testimonials.desc">
+                What clients say after launching social campaigns, content systems, and performance marketing together.
+            </p>
+        </header>
+
+        <div id="reviews-marquee" class="reviews-marquee mt-12">
+            <div id="reviews-track" class="reviews-track pb-3">
+                <article class="w-[85vw] sm:w-[66vw] lg:w-[32rem] bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-7 sm:p-8 card-shadow">
+                    <p class="text-orange-400 tracking-[0.14em] text-lg">★★★★★</p>
+                    <blockquote class="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        "Clear process, fast iterations, and the brand system still feels bold a year later. Exactly the partner we needed."
+                    </blockquote>
+                    <footer class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&amp;fit=crop&amp;w=112&amp;h=112&amp;q=80" width="56" height="56" alt="" class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-100 dark:ring-orange-900/50 shrink-0">
+                        <div class="min-w-0">
+                            <p class="font-bold text-2xl text-[#111] dark:text-white">Maya Chen</p>
+                            <p class="mt-1 text-base text-gray-500 dark:text-gray-400">Marketing lead, Aurora Coffee</p>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="w-[85vw] sm:w-[66vw] lg:w-[32rem] bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-7 sm:p-8 card-shadow">
+                    <p class="text-orange-400 tracking-[0.14em] text-lg">★★★★★</p>
+                    <blockquote class="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        "Campaign visuals landed on time for launch week. Great communication and attention to small typographic details."
+                    </blockquote>
+                    <footer class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&amp;fit=crop&amp;w=112&amp;h=112&amp;q=80" width="56" height="56" alt="" class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-100 dark:ring-orange-900/50 shrink-0">
+                        <div class="min-w-0">
+                            <p class="font-bold text-2xl text-[#111] dark:text-white">James Okonkwo</p>
+                            <p class="mt-1 text-base text-gray-500 dark:text-gray-400">Founder, Pulse Festival</p>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="w-[85vw] sm:w-[66vw] lg:w-[32rem] bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-7 sm:p-8 card-shadow">
+                    <p class="text-orange-400 tracking-[0.14em] text-lg">★★★★★</p>
+                    <blockquote class="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        "UI kit was organized for engineering handoff — naming, states, and edge cases were already thought through."
+                    </blockquote>
+                    <footer class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&amp;fit=crop&amp;w=112&amp;h=112&amp;q=80" width="56" height="56" alt="" class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-100 dark:ring-orange-900/50 shrink-0">
+                        <div class="min-w-0">
+                            <p class="font-bold text-2xl text-[#111] dark:text-white">Sofia Alvarez</p>
+                            <p class="mt-1 text-base text-gray-500 dark:text-gray-400">Product, Kite Finance</p>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="w-[85vw] sm:w-[66vw] lg:w-[32rem] bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-7 sm:p-8 card-shadow">
+                    <p class="text-orange-400 tracking-[0.14em] text-lg">★★★★★</p>
+                    <blockquote class="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        "Packaging proofs were meticulous; print shop had almost zero rework. Would collaborate again on the next line."
+                    </blockquote>
+                    <footer class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&amp;fit=crop&amp;w=112&amp;h=112&amp;q=80" width="56" height="56" alt="" class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-100 dark:ring-orange-900/50 shrink-0">
+                        <div class="min-w-0">
+                            <p class="font-bold text-2xl text-[#111] dark:text-white">Hnin Wai</p>
+                            <p class="mt-1 text-base text-gray-500 dark:text-gray-400">Studio manager, Loom Skincare</p>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="w-[85vw] sm:w-[66vw] lg:w-[32rem] bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-7 sm:p-8 card-shadow">
+                    <p class="text-orange-400 tracking-[0.14em] text-lg">★★★★★</p>
+                    <blockquote class="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        "Poster series had real personality without losing legibility on large format — rare balance."
+                    </blockquote>
+                    <footer class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=112&amp;h=112&amp;q=80" width="56" height="56" alt="" class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-100 dark:ring-orange-900/50 shrink-0">
+                        <div class="min-w-0">
+                            <p class="font-bold text-2xl text-[#111] dark:text-white">Daniel Park</p>
+                            <p class="mt-1 text-base text-gray-500 dark:text-gray-400">Creative director, Signal Posters</p>
+                        </div>
+                    </footer>
+                </article>
+
+                <!-- Duplicate set for seamless loop -->
+                <article class="w-[85vw] sm:w-[66vw] lg:w-[32rem] bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-7 sm:p-8 card-shadow" aria-hidden="true">
+                    <p class="text-orange-400 tracking-[0.14em] text-lg">★★★★★</p>
+                    <blockquote class="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        "Clear process, fast iterations, and the brand system still feels bold a year later. Exactly the partner we needed."
+                    </blockquote>
+                    <footer class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&amp;fit=crop&amp;w=112&amp;h=112&amp;q=80" width="56" height="56" alt="" class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-100 dark:ring-orange-900/50 shrink-0" aria-hidden="true">
+                        <div class="min-w-0">
+                            <p class="font-bold text-2xl text-[#111] dark:text-white">Maya Chen</p>
+                            <p class="mt-1 text-base text-gray-500 dark:text-gray-400">Marketing lead, Aurora Coffee</p>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="w-[85vw] sm:w-[66vw] lg:w-[32rem] bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-7 sm:p-8 card-shadow" aria-hidden="true">
+                    <p class="text-orange-400 tracking-[0.14em] text-lg">★★★★★</p>
+                    <blockquote class="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        "Campaign visuals landed on time for launch week. Great communication and attention to small typographic details."
+                    </blockquote>
+                    <footer class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&amp;fit=crop&amp;w=112&amp;h=112&amp;q=80" width="56" height="56" alt="" class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-100 dark:ring-orange-900/50 shrink-0" aria-hidden="true">
+                        <div class="min-w-0">
+                            <p class="font-bold text-2xl text-[#111] dark:text-white">James Okonkwo</p>
+                            <p class="mt-1 text-base text-gray-500 dark:text-gray-400">Founder, Pulse Festival</p>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="w-[85vw] sm:w-[66vw] lg:w-[32rem] bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-7 sm:p-8 card-shadow" aria-hidden="true">
+                    <p class="text-orange-400 tracking-[0.14em] text-lg">★★★★★</p>
+                    <blockquote class="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        "UI kit was organized for engineering handoff — naming, states, and edge cases were already thought through."
+                    </blockquote>
+                    <footer class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&amp;fit=crop&amp;w=112&amp;h=112&amp;q=80" width="56" height="56" alt="" class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-100 dark:ring-orange-900/50 shrink-0" aria-hidden="true">
+                        <div class="min-w-0">
+                            <p class="font-bold text-2xl text-[#111] dark:text-white">Sofia Alvarez</p>
+                            <p class="mt-1 text-base text-gray-500 dark:text-gray-400">Product, Kite Finance</p>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="w-[85vw] sm:w-[66vw] lg:w-[32rem] bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-7 sm:p-8 card-shadow" aria-hidden="true">
+                    <p class="text-orange-400 tracking-[0.14em] text-lg">★★★★★</p>
+                    <blockquote class="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        "Packaging proofs were meticulous; print shop had almost zero rework. Would collaborate again on the next line."
+                    </blockquote>
+                    <footer class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&amp;fit=crop&amp;w=112&amp;h=112&amp;q=80" width="56" height="56" alt="" class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-100 dark:ring-orange-900/50 shrink-0" aria-hidden="true">
+                        <div class="min-w-0">
+                            <p class="font-bold text-2xl text-[#111] dark:text-white">Hnin Wai</p>
+                            <p class="mt-1 text-base text-gray-500 dark:text-gray-400">Studio manager, Loom Skincare</p>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="w-[85vw] sm:w-[66vw] lg:w-[32rem] bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-2xl p-7 sm:p-8 card-shadow" aria-hidden="true">
+                    <p class="text-orange-400 tracking-[0.14em] text-lg">★★★★★</p>
+                    <blockquote class="mt-4 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                        "Poster series had real personality without losing legibility on large format — rare balance."
+                    </blockquote>
+                    <footer class="mt-8 flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&amp;fit=crop&amp;w=112&amp;h=112&amp;q=80" width="56" height="56" alt="" class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-100 dark:ring-orange-900/50 shrink-0" aria-hidden="true">
+                        <div class="min-w-0">
+                            <p class="font-bold text-2xl text-[#111] dark:text-white">Daniel Park</p>
+                            <p class="mt-1 text-base text-gray-500 dark:text-gray-400">Creative director, Signal Posters</p>
+                        </div>
+                    </footer>
+                </article>
+            </div>
+        </div>
+
+        <div class="mt-16 md:mt-20 max-w-5xl mx-auto">
+            <p class="text-center text-orange-500 font-bold tracking-[0.28em] uppercase text-sm md:text-base" data-i18n="testimonials.partnersEyebrow">Collaborators</p>
+            <h3 class="text-2xl sm:text-3xl font-bold text-[#111] dark:text-white mt-3 text-center tracking-tight" data-i18n="testimonials.partnersTitle">Partnerships</h3>
+            <p class="mt-4 text-center text-gray-500 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed" data-i18n="testimonials.partnersDesc">
+                Studios and teams we regularly pair with on campaigns, content systems, and launch creative.
+            </p>
+            <div id="partners-marquee" class="partners-marquee mt-10 w-full min-w-0">
+                <div id="partners-track" class="partners-track pb-2">
+                    <article class="shrink-0 w-[15rem] sm:w-[17.5rem] rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-hidden text-center card-shadow">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85" srcset="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=560&amp;h=311&amp;q=80 560w, https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85 900w" sizes="(max-width: 640px) 15rem, 17.5rem" width="900" height="500" alt="Creative team at work — Pixel &amp; Paper" class="w-full h-32 sm:h-40 object-cover" loading="lazy" decoding="async" fetchpriority="low">
+                        <div class="p-4 sm:p-5">
+                            <h4 class="text-sm sm:text-base font-semibold text-[#111] dark:text-white tracking-tight">Pixel &amp; Paper</h4>
+                        </div>
+                    </article>
+                    <article class="shrink-0 w-[15rem] sm:w-[17.5rem] rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-hidden text-center card-shadow">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85" srcset="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;w=560&amp;h=311&amp;q=80 560w, https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85 900w" sizes="(max-width: 640px) 15rem, 17.5rem" width="900" height="500" alt="Tech team collaborating — Orbit Labs" class="w-full h-32 sm:h-40 object-cover" loading="lazy" decoding="async" fetchpriority="low">
+                        <div class="p-4 sm:p-5">
+                            <h4 class="text-sm sm:text-base font-semibold text-[#111] dark:text-white tracking-tight">Orbit Labs</h4>
+                        </div>
+                    </article>
+                    <article class="shrink-0 w-[15rem] sm:w-[17.5rem] rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-hidden text-center card-shadow">
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea87474?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85" srcset="https://images.unsplash.com/photo-1497215728101-856f4ea87474?auto=format&amp;fit=crop&amp;w=560&amp;h=311&amp;q=80 560w, https://images.unsplash.com/photo-1497215728101-856f4ea87474?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85 900w" sizes="(max-width: 640px) 15rem, 17.5rem" width="900" height="500" alt="Bright studio workspace — Lumen Agency" class="w-full h-32 sm:h-40 object-cover" loading="lazy" decoding="async" fetchpriority="low">
+                        <div class="p-4 sm:p-5">
+                            <h4 class="text-sm sm:text-base font-semibold text-[#111] dark:text-white tracking-tight">Lumen Agency</h4>
+                        </div>
+                    </article>
+                    <article class="shrink-0 w-[15rem] sm:w-[17.5rem] rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-hidden text-center card-shadow">
+                        <img src="https://images.unsplash.com/photo-1531498860502-47328061aa35?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85" srcset="https://images.unsplash.com/photo-1531498860502-47328061aa35?auto=format&amp;fit=crop&amp;w=560&amp;h=311&amp;q=80 560w, https://images.unsplash.com/photo-1531498860502-47328061aa35?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85 900w" sizes="(max-width: 640px) 15rem, 17.5rem" width="900" height="500" alt="Design laptops and sketches — Studio Kite" class="w-full h-32 sm:h-40 object-cover" loading="lazy" decoding="async" fetchpriority="low">
+                        <div class="p-4 sm:p-5">
+                            <h4 class="text-sm sm:text-base font-semibold text-[#111] dark:text-white tracking-tight">Studio Kite</h4>
+                        </div>
+                    </article>
+                    <article class="shrink-0 w-[15rem] sm:w-[17.5rem] rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-hidden text-center card-shadow">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85" srcset="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=560&amp;h=311&amp;q=80 560w, https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85 900w" sizes="(max-width: 640px) 15rem, 17.5rem" width="900" height="500" alt="City skyline and network of buildings — Field &amp; Form" class="w-full h-32 sm:h-40 object-cover" loading="lazy" decoding="async" fetchpriority="low">
+                        <div class="p-4 sm:p-5">
+                            <h4 class="text-sm sm:text-base font-semibold text-[#111] dark:text-white tracking-tight">Field &amp; Form</h4>
+                        </div>
+                    </article>
+                    <!-- duplicate row for seamless JS loop -->
+                    <article class="shrink-0 w-[15rem] sm:w-[17.5rem] rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-hidden text-center card-shadow" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85" srcset="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=560&amp;h=311&amp;q=80 560w, https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85 900w" sizes="(max-width: 640px) 15rem, 17.5rem" width="900" height="500" alt="" class="w-full h-32 sm:h-40 object-cover" loading="lazy" decoding="async" fetchpriority="low" aria-hidden="true">
+                        <div class="p-4 sm:p-5">
+                            <h4 class="text-sm sm:text-base font-semibold text-[#111] dark:text-white tracking-tight">Pixel &amp; Paper</h4>
+                        </div>
+                    </article>
+                    <article class="shrink-0 w-[15rem] sm:w-[17.5rem] rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-hidden text-center card-shadow" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85" srcset="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;w=560&amp;h=311&amp;q=80 560w, https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85 900w" sizes="(max-width: 640px) 15rem, 17.5rem" width="900" height="500" alt="" class="w-full h-32 sm:h-40 object-cover" loading="lazy" decoding="async" fetchpriority="low" aria-hidden="true">
+                        <div class="p-4 sm:p-5">
+                            <h4 class="text-sm sm:text-base font-semibold text-[#111] dark:text-white tracking-tight">Orbit Labs</h4>
+                        </div>
+                    </article>
+                    <article class="shrink-0 w-[15rem] sm:w-[17.5rem] rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-hidden text-center card-shadow" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1497215728101-856f4ea87474?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85" srcset="https://images.unsplash.com/photo-1497215728101-856f4ea87474?auto=format&amp;fit=crop&amp;w=560&amp;h=311&amp;q=80 560w, https://images.unsplash.com/photo-1497215728101-856f4ea87474?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85 900w" sizes="(max-width: 640px) 15rem, 17.5rem" width="900" height="500" alt="" class="w-full h-32 sm:h-40 object-cover" loading="lazy" decoding="async" fetchpriority="low" aria-hidden="true">
+                        <div class="p-4 sm:p-5">
+                            <h4 class="text-sm sm:text-base font-semibold text-[#111] dark:text-white tracking-tight">Lumen Agency</h4>
+                        </div>
+                    </article>
+                    <article class="shrink-0 w-[15rem] sm:w-[17.5rem] rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-hidden text-center card-shadow" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1531498860502-47328061aa35?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85" srcset="https://images.unsplash.com/photo-1531498860502-47328061aa35?auto=format&amp;fit=crop&amp;w=560&amp;h=311&amp;q=80 560w, https://images.unsplash.com/photo-1531498860502-47328061aa35?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85 900w" sizes="(max-width: 640px) 15rem, 17.5rem" width="900" height="500" alt="" class="w-full h-32 sm:h-40 object-cover" loading="lazy" decoding="async" fetchpriority="low" aria-hidden="true">
+                        <div class="p-4 sm:p-5">
+                            <h4 class="text-sm sm:text-base font-semibold text-[#111] dark:text-white tracking-tight">Studio Kite</h4>
+                        </div>
+                    </article>
+                    <article class="shrink-0 w-[15rem] sm:w-[17.5rem] rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-hidden text-center card-shadow" aria-hidden="true">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85" srcset="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=560&amp;h=311&amp;q=80 560w, https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=900&amp;h=500&amp;q=85 900w" sizes="(max-width: 640px) 15rem, 17.5rem" width="900" height="500" alt="" class="w-full h-32 sm:h-40 object-cover" loading="lazy" decoding="async" fetchpriority="low" aria-hidden="true">
+                        <div class="p-4 sm:p-5">
+                            <h4 class="text-sm sm:text-base font-semibold text-[#111] dark:text-white tracking-tight">Field &amp; Form</h4>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. FAQ -->
+    <section class="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-gray-200/80 dark:border-zinc-800">
+        <header class="text-center max-w-3xl mx-auto">
+            <p class="text-orange-500 font-bold tracking-[0.28em] uppercase text-sm md:text-base">Answers</p>
+            <h2 class="text-4xl sm:text-5xl font-bold text-[#111] dark:text-white mt-4 tracking-tight">Frequently asked questions</h2>
+            <p class="mt-5 text-lg sm:text-xl text-gray-500 dark:text-gray-400 leading-relaxed">
+                Quick answers about timelines, deliverables, and how we run Facebook and TikTok work with you.
+            </p>
+        </header>
+
+        <div class="mt-12 max-w-7xl mx-auto grid md:grid-cols-2 gap-3 sm:gap-4">
+            <details class="group rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 card-shadow">
+                <summary class="list-none cursor-pointer flex items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-[#111] dark:text-white">
+                    How long does a Facebook or TikTok campaign take to launch?
+                    <span class="text-orange-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    After assets and access are ready, most monthly content plans go live within 1–2 weeks. Video production batches depend on scripts and shoot days — we agree milestones in the kickoff call.
+                </p>
+            </details>
+
+            <details class="group rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 card-shadow">
+                <summary class="list-none cursor-pointer flex items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-[#111] dark:text-white">
+                    Can you adapt existing brand guidelines?
+                    <span class="text-orange-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Yes. We can extend established grids, color, and type systems while keeping production partners aligned on specs and exports.
+                </p>
+            </details>
+
+            <details class="group rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 card-shadow">
+                <summary class="list-none cursor-pointer flex items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-[#111] dark:text-white">
+                    Do you work with clients outside Myanmar?
+                    <span class="text-orange-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Yes. We run remote-first collaboration — shared calendars, cloud folders, and structured async updates so campaigns stay on schedule.
+                </p>
+            </details>
+
+            <details class="group rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 card-shadow">
+                <summary class="list-none cursor-pointer flex items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-[#111] dark:text-white">
+                    Do you collaborate with developers or printers?
+                    <span class="text-orange-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Often. We supply annotated files, asset naming, and export presets so implementation or print production stays smooth.
+                </p>
+            </details>
+
+            <details class="group rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 card-shadow">
+                <summary class="list-none cursor-pointer flex items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-[#111] dark:text-white">
+                    What files are included at handoff?
+                    <span class="text-orange-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Organized Figma libraries, PDF brand guidelines, print-ready exports, and motion references when applicable.
+                </p>
+            </details>
+
+            <details class="group rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 card-shadow">
+                <summary class="list-none cursor-pointer flex items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-[#111] dark:text-white">
+                    What do you need from me to get started?
+                    <span class="text-orange-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    A short brief, links to references you like, audience notes, and any must-keep constraints (logos, legal, accessibility).
+                </p>
+            </details>
+
+            <details class="group rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 card-shadow">
+                <summary class="list-none cursor-pointer flex items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-[#111] dark:text-white">
+                    How do revisions and rounds of feedback work?
+                    <span class="text-orange-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Each phase includes agreed revision rounds (typically two per milestone). Extra rounds can be scoped as a small add-on so timelines stay predictable.
+                </p>
+            </details>
+
+            <details class="group rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 card-shadow">
+                <summary class="list-none cursor-pointer flex items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-[#111] dark:text-white">
+                    How do payments and deposits work?
+                    <span class="text-orange-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    A deposit secures the calendar; remaining invoices are tied to agreed milestones. Terms are confirmed in writing before work begins.
+                </p>
+            </details>
+
+            <details class="group rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 card-shadow">
+                <summary class="list-none cursor-pointer flex items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-[#111] dark:text-white">
+                    What is your pricing structure?
+                    <span class="text-orange-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Projects are usually fixed-fee by phase with a clear scope document. For exploratory work, a discovery sprint can be quoted separately.
+                </p>
+            </details>
+
+            <details class="group rounded-2xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 card-shadow">
+                <summary class="list-none cursor-pointer flex items-center justify-between gap-3 px-5 py-4 text-base font-semibold text-[#111] dark:text-white">
+                    What if the project scope changes mid-way?
+                    <span class="text-orange-500 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p class="px-5 pb-4 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    We pause, document the new scope, and agree on timeline and fee adjustments before continuing — no surprise scope creep.
+                </p>
+            </details>
+        </div>
+    </section>
+
+    <!-- 13. Footer -->
+    <footer id="contact" class="border-t border-gray-200/80 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 px-6 py-14">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+            <div class="md:col-span-1">
+                <p class="font-bold text-xl text-[#111] dark:text-white">MAHAR Digital Marketing Lad</p>
+                <p class="mt-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+                    MAHAR Digital Marketing — Facebook, TikTok, and performance-led campaigns for modern brands.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-[#111] dark:text-white">Our services</h3>
+                <ul class="mt-4 space-y-2.5 text-gray-600 dark:text-gray-300">
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Design Gallery</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Tools we use</a></li>
+                    <li><a href="contact.html" class="hover:text-orange-500 transition-colors">Contact us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-[#111] dark:text-white">Quick links</h3>
+                <ul class="mt-4 space-y-2.5 text-gray-600 dark:text-gray-300">
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Home</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Services &amp; plans</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Privacy policy</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Terms of use</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-[#111] dark:text-white">Contacts</h3>
+                <ul class="mt-4 space-y-2.5 text-gray-600 dark:text-gray-300">
+                    <li>+95 9 781956252</li>
+                    <li><a href="mailto:hello@mahar.stringinnovation.com" class="hover:text-orange-500 transition-colors">hello@mahar.stringinnovation.com</a></li>
+                    <li>Yangon Creative District<br>Studio 4B</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-gray-200 dark:border-zinc-800 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-sm text-gray-500 dark:text-gray-400">
+            <p>© 2026 MAHAR Digital Marketing. All rights reserved.</p>
+            <p>Power By WhiteTechnology</p>
+        </div>
+    </footer>
+
+    <dialog id="portfolio-lightbox" class="max-w-[min(92vw,56rem)] w-full rounded-2xl border-0 p-3 bg-zinc-900 shadow-2xl text-left">
+        <div class="relative">
+            <img id="portfolio-lightbox-img" src="" alt="" class="w-full rounded-xl max-h-[min(85vh,720px)] object-contain bg-black">
+            <button type="button" id="portfolio-lightbox-close" class="absolute -top-1 -right-1 sm:top-2 sm:right-2 rounded-full bg-white text-zinc-900 w-10 h-10 text-xl font-light leading-none flex items-center justify-center shadow hover:bg-gray-100" aria-label="Close">×</button>
+        </div>
+    </dialog>
+
+    <!-- NIGHT MODE LOGIC -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            lightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+        (function mobileNav() {
+            var backdrop = document.getElementById('mobile-menu-backdrop');
+            if (!mobileMenuBtn || !mobileMenu) return;
+            function setOpen(open) {
+                mobileMenu.classList.toggle('hidden', !open);
+                if (backdrop) backdrop.classList.toggle('hidden', !open);
+                document.body.classList.toggle('overflow-hidden', open);
+                mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            }
+            function closeMenu() { setOpen(false); }
+            mobileMenuBtn.addEventListener('click', function () {
+                setOpen(mobileMenu.classList.contains('hidden'));
+            });
+            if (backdrop) backdrop.addEventListener('click', closeMenu);
+            mobileMenu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', closeMenu);
+            });
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768) closeMenu();
+            });
+        })();
+
+        document.getElementById('scroll-top').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        (function portfolioLightbox() {
+            var dialog = document.getElementById('portfolio-lightbox');
+            var img = document.getElementById('portfolio-lightbox-img');
+            var closeBtn = document.getElementById('portfolio-lightbox-close');
+            if (!dialog || !img || !closeBtn) return;
+            document.querySelectorAll('.portfolio-zoom').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    img.src = btn.getAttribute('data-lightbox-src') || '';
+                    img.alt = btn.getAttribute('data-lightbox-alt') || '';
+                    dialog.showModal();
+                });
+            });
+            closeBtn.addEventListener('click', function () {
+                dialog.close();
+            });
+            dialog.addEventListener('click', function (e) {
+                if (e.target === dialog) dialog.close();
+            });
+        })();
+
+        (function languageToggle() {
+            var enBtn = document.getElementById('lang-en');
+            var myBtn = document.getElementById('lang-my');
+            if (!enBtn || !myBtn) return;
+
+            var translations = {
+                en: {
+                    'nav.home': 'Home',
+                    'nav.services': 'Services',
+                    'nav.design': 'Design',
+                    'nav.tools': 'Tools',
+                    'nav.faq': 'FAQ',
+                    'nav.contact': 'Contact',
+                    'hero.eyebrow': 'Digital Marketing · Social-First Growth',
+                    'hero.title': 'Grow your brand where your audience scrolls.',
+                    'hero.desc': 'MAHAR Digital Marketing plans and runs Facebook and TikTok campaigns — from branding assets and monthly content to video production and performance reporting. Edit all copy from the admin panel.',
+                    'hero.download': 'Download profile (PDF)',
+                    'hero.view': 'View services',
+                    'services.eyebrow': 'Mahar Digital Marketing',
+                    'services.title': 'Digital Marketing Services & Plans',
+                    'services.desc': 'Facebook branding, monthly social management, and TikTok video packages — built for brands that want measurable reach and standout creative.',
+                    'services.facebook': 'Facebook',
+                    'services.tiktok': 'TikTok',
+                    'services.cta': 'Get Started',
+                    'testimonials.eyebrow': 'Testimonials',
+                    'testimonials.title': 'Customer reviews',
+                    'testimonials.desc': 'What clients say after launching social campaigns, content systems, and performance marketing together.',
+                    'testimonials.partnersEyebrow': 'Collaborators',
+                    'testimonials.partnersTitle': 'Partnerships',
+                    'testimonials.partnersDesc': 'Studios and teams we regularly pair with on campaigns, content systems, and launch creative.'
+                },
+                my: {
+                    'nav.home': 'ပင်မ',
+                    'nav.services': 'ဝန်ဆောင်မှုများ',
+                    'nav.design': 'ဒီဇိုင်း',
+                    'nav.tools': 'ကိရိယာများ',
+                    'nav.faq': 'မေးလေ့ရှိသောမေးခွန်းများ',
+                    'nav.contact': 'ဆက်သွယ်ရန်',
+                    'hero.eyebrow': 'ဒီဂျစ်တယ် မားကက်တင်း · Social-First Growth',
+                    'hero.title': 'သင့်ပရိသတ်တွေ Scroll လုပ်နေတဲ့နေရာမှာ သင့် Brand ကို ကြီးထွားစေပါ။',
+                    'hero.desc': 'MAHAR Digital Marketing မှ Facebook နှင့် TikTok Campaign များကို Branding Asset မှ စ၍ Monthly Content, Video Production, Performance Reporting အထိ စီမံပေးပါသည်။ စာသားများကို admin panel မှ ပြင်ဆင်နိုင်ပါသည်။',
+                    'hero.download': 'Profile (PDF) ဒေါင်းလုပ်',
+                    'hero.view': 'ဝန်ဆောင်မှုများ ကြည့်ရန်',
+                    'services.eyebrow': 'Mahar Digital Marketing',
+                    'services.title': 'Digital Marketing ဝန်ဆောင်မှုနှင့် အစီအစဉ်များ',
+                    'services.desc': 'Facebook Branding, Monthly Social Management နှင့် TikTok Video Package များကို measurable reach နှင့် standout creative လိုအပ်သော brand များအတွက် တည်ဆောက်ထားပါသည်။',
+                    'services.facebook': 'Facebook',
+                    'services.tiktok': 'TikTok',
+                    'services.cta': 'စတင်ရန်',
+                    'testimonials.eyebrow': 'ဖောက်သည်မှတ်ချက်များ',
+                    'testimonials.title': 'Customer Reviews',
+                    'testimonials.desc': 'Social campaign, content system နှင့် performance marketing များ ပြုလုပ်ပြီးနောက် ဖောက်သည်များ၏ သဘောထားများ။',
+                    'testimonials.partnersEyebrow': 'ပူးပေါင်းလုပ်ဖော်ကိုင်ဖက်များ',
+                    'testimonials.partnersTitle': 'ပူးပေါင်းဆောင်ရွက်မှုများ',
+                    'testimonials.partnersDesc': 'Campaign၊ content system နှင့် launch creative များတွင် အမြဲတွဲလုပ်သော စတူဒီယိုနှင့် အဖွဲ့များ။'
+                }
+            };
+            var fullPageMapMY = {
+                'Facebook branding & monthly marketing': 'Facebook Branding နှင့် Monthly Marketing',
+                'Branding & Design Packages': 'Branding နှင့် Design Package များ',
+                'Monthly Marketing & Content': 'Monthly Marketing နှင့် Content',
+                'Basic': 'အခြေခံ',
+                'Silver': 'ဆီလ်ဗာ',
+                'Gold': 'ဂိုးလ်',
+                'Package': 'ပက်ကေ့ချ်',
+                'Option — 1': 'ရွေးချယ်မှု — ၁',
+                'Option — 2': 'ရွေးချယ်မှု — ၂',
+                'Revision — 1': 'ပြင်ဆင်မှု — ၁',
+                'Revision — 2': 'ပြင်ဆင်မှု — ၂',
+                'Business Card design': 'Business Card ဒီဇိုင်း',
+                'Letter Head design': 'Letter Head ဒီဇိုင်း',
+                'Brand Pattern': 'Brand Pattern',
+                'Logo Grid': 'Logo Grid',
+                'Logo Guide': 'Logo Guide',
+                'Download TikTok plan (PDF)': 'TikTok အစီအစဉ် (PDF) ဒေါင်းလုပ်',
+                'Minimum order: packages start from 10 videos.': 'အနည်းဆုံးအော်ဒါ: ၁၀ ဗီဒီယိုမှ စတင်ပါသည်။',
+                '(TikTok)': '(TikTok)',
+                'TikTok video production — 10-video plans': 'TikTok ဗီဒီယိုထုတ်လုပ်မှု — ၁၀ ဗီဒီယိုအစီအစဉ်',
+                'Scripts, production tiers, editing, and optional media buying. Amounts in MMK unless noted.': 'Script, ထုတ်လုပ်မှုအဆင့်, Editing နှင့် လိုအပ်ပါက Media Buying ပါဝင်သည်။ အထူးဖော်ပြမထားပါက MMK ဖြင့်တွက်ချက်သည်။',
+                'Service detail': 'ဝန်ဆောင်မှုအသေးစိတ်',
+                'Per video (MMK)': 'ဗီဒီယိုတစ်ခုလျှင် (MMK)',
+                'Total for 10 videos (MMK)': 'ဗီဒီယို ၁၀ ခု စုစုပေါင်း (MMK)',
+                'Selected design': 'ရွေးချယ်ထားသော ဒီဇိုင်းများ',
+                'Campaigns, social content, and brand systems we have shipped — click a cover to zoom or open the full case study.': 'ကျွန်ုပ်တို့ လုပ်ဆောင်ခဲ့သည့် campaign, social content နှင့် brand system များ — cover ကိုနှိပ်ပြီး zoom လုပ်ရန် သို့မဟုတ် case study အပြည့်အစုံဖွင့်ရန်။',
+                'All designs →': 'ဒီဇိုင်းအားလုံး →',
+                'Branding': 'Branding',
+                'Campaign': 'Campaign',
+                'Editorial': 'Editorial',
+                'Digital': 'Digital',
+                'Packaging': 'Packaging',
+                'Print': 'Print',
+                'Design →': 'ဒီဇိုင်း →',
+                'Why us': 'ကျွန်ုပ်တို့ ဘာကြောင့်',
+                'Why choose us': 'ဘာကြောင့် ကျွန်ုပ်တို့ကို ရွေးချယ်သင့်သနည်း',
+                'Performance-led planning': 'ရလဒ်ကို အဓိကထားသော အစီအစဉ်',
+                'Platform-native creative': 'Platform နဲ့ ကိုက်ညီသော Creative',
+                'Transparent reporting': 'ပွင့်လင်းမြင်သာသော Report',
+                'End-to-end campaigns': 'အစမှ အဆုံးထိ Campaign',
+                'Stack': 'အသုံးပြုသောစနစ်',
+                'Creative & marketing stack': 'Creative နှင့် Marketing stack',
+                'Official site →': 'တရားဝင်ဆိုဒ် →',
+                'Answers': 'ဖြေကြားချက်များ',
+                'Frequently asked questions': 'မေးလေ့ရှိသော မေးခွန်းများ',
+                'Quick answers about timelines, deliverables, and how we run Facebook and TikTok work with you.': 'Timeline, deliverable များနှင့် Facebook / TikTok လုပ်ငန်းများကို ဘယ်လိုလည်ပတ်သလဲဆိုတာ အတိုချုံးဖြေကြားချက်များ။',
+                'Our services': 'ဝန်ဆောင်မှုများ',
+                'Quick links': 'အမြန်လင့်ခ်များ',
+                'Contacts': 'ဆက်သွယ်ရန်',
+                'Design Gallery': 'ဒီဇိုင်းပြခန်း',
+                'Tools we use': 'အသုံးပြုသော Tools များ',
+                'Contact us': 'ဆက်သွယ်ရန်',
+                'Services & plans': 'ဝန်ဆောင်မှုနှင့် အစီအစဉ်များ',
+                'Privacy policy': 'ကိုယ်ရေးအချက်အလက် မူဝါဒ',
+                'Terms of use': 'အသုံးပြုမှု စည်းကမ်းချက်များ',
+                'Power By WhiteTechnology': 'Power By WhiteTechnology'
+            };
+
+            function setActive(lang) {
+                var isEN = lang === 'en';
+                enBtn.className = isEN
+                    ? 'w-8 h-8 rounded-full bg-black text-white flex items-center justify-center dark:bg-white dark:text-black ring-2 ring-orange-300 transition'
+                    : 'w-8 h-8 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-zinc-800 flex items-center justify-center transition';
+                myBtn.className = !isEN
+                    ? 'w-8 h-8 rounded-full bg-black text-white flex items-center justify-center dark:bg-white dark:text-black ring-2 ring-orange-300 transition'
+                    : 'w-8 h-8 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-zinc-800 flex items-center justify-center transition';
+            }
+
+            function applyLanguage(lang) {
+                var dict = translations[lang] || translations.en;
+                document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                    var key = el.getAttribute('data-i18n');
+                    if (dict[key]) el.textContent = dict[key];
+                });
+                var allTextEls = document.querySelectorAll('h1,h2,h3,p,a,button,summary,label,li,th,td,span');
+                allTextEls.forEach(function (el) {
+                    if (el.children && el.children.length > 0) return;
+                    if (!el.dataset.enText) el.dataset.enText = el.textContent;
+                    var original = (el.dataset.enText || '').trim().replace(/\s+/g, ' ');
+                    if (lang === 'en') {
+                        el.textContent = el.dataset.enText;
+                    } else if (fullPageMapMY[original]) {
+                        el.textContent = fullPageMapMY[original];
+                    }
+                });
+                document.querySelectorAll('[placeholder]').forEach(function (el) {
+                    if (!el.dataset.enPlaceholder) el.dataset.enPlaceholder = el.getAttribute('placeholder');
+                    var base = (el.dataset.enPlaceholder || '').trim();
+                    if (lang === 'en') el.setAttribute('placeholder', el.dataset.enPlaceholder);
+                    else if (fullPageMapMY[base]) el.setAttribute('placeholder', fullPageMapMY[base]);
+                });
+                localStorage.setItem('site-lang', lang);
+                setActive(lang);
+            }
+
+            enBtn.addEventListener('click', function () { applyLanguage('en'); });
+            myBtn.addEventListener('click', function () { applyLanguage('my'); });
+
+            applyLanguage(localStorage.getItem('site-lang') || 'en');
+        })();
+
+        (function leftMovingReviews() {
+            var marquee = document.getElementById('reviews-marquee');
+            var track = document.getElementById('reviews-track');
+            if (!marquee || !track) return;
+
+            marquee.classList.add('js-left-scroll');
+
+            var speed = 0.55;
+            var position = 0;
+            var pause = false;
+            var loopWidth = 0;
+            var frameId = null;
+
+            function getLoopWidth() {
+                return track.scrollWidth / 2;
+            }
+
+            function resizeLoop() {
+                loopWidth = getLoopWidth();
+            }
+
+            function animate() {
+                if (!pause && loopWidth > 0) {
+                    position -= speed;
+                    if (Math.abs(position) >= loopWidth) position = 0;
+                    track.style.transform = 'translate3d(' + position + 'px, 0, 0)';
+                }
+                frameId = requestAnimationFrame(animate);
+            }
+
+            marquee.addEventListener('mouseenter', function () { pause = true; });
+            marquee.addEventListener('mouseleave', function () { pause = false; });
+            marquee.addEventListener('touchstart', function () { pause = true; }, { passive: true });
+            marquee.addEventListener('touchend', function () { pause = false; }, { passive: true });
+            window.addEventListener('resize', resizeLoop);
+            window.addEventListener('beforeunload', function () {
+                if (frameId) cancelAnimationFrame(frameId);
+            });
+
+            resizeLoop();
+            animate();
+        })();
+
+        (function leftMovingPartners() {
+            var marquee = document.getElementById('partners-marquee');
+            var track = document.getElementById('partners-track');
+            if (!marquee || !track) return;
+
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (reduceMotion.matches) return;
+
+            var speed = 0.42;
+            var position = 0;
+            var pause = false;
+            var loopWidth = 0;
+            var frameId = null;
+
+            function getLoopWidth() {
+                return track.scrollWidth / 2;
+            }
+
+            function resizeLoop() {
+                loopWidth = getLoopWidth();
+            }
+
+            function animate() {
+                if (!pause && loopWidth > 0) {
+                    position -= speed;
+                    if (Math.abs(position) >= loopWidth) position = 0;
+                    track.style.transform = 'translate3d(' + position + 'px, 0, 0)';
+                }
+                frameId = requestAnimationFrame(animate);
+            }
+
+            marquee.addEventListener('mouseenter', function () { pause = true; });
+            marquee.addEventListener('mouseleave', function () { pause = false; });
+            marquee.addEventListener('touchstart', function () { pause = true; }, { passive: true });
+            marquee.addEventListener('touchend', function () { pause = false; }, { passive: true });
+            window.addEventListener('resize', resizeLoop);
+            window.addEventListener('load', resizeLoop);
+            window.addEventListener('beforeunload', function () {
+                if (frameId) cancelAnimationFrame(frameId);
+            });
+            track.querySelectorAll('img').forEach(function (img) {
+                if (!img.complete) img.addEventListener('load', resizeLoop, { once: true });
+            });
+
+            resizeLoop();
+            animate();
+        })();
+    </script>
+</body>
+</html>
