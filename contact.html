@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Contact | MAHAR Digital Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' };
+    </script>
+    <style>
+        html { scroll-padding-top: 5.5rem; }
+        body { font-family: Inter, sans-serif; }
+        @media (max-width: 767px) {
+            .mobile-touch-target { min-height: 44px; min-width: 44px; }
+        }
+        @media (max-width: 414px) {
+            .xr-nav-wrap {
+                padding-left: 0.9rem;
+                padding-right: 0.9rem;
+                padding-top: 0.65rem;
+                padding-bottom: 0.65rem;
+            }
+            .xr-brand-text {
+                font-size: 0.88rem;
+                max-width: 10rem;
+            }
+            .xr-main-pad {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .xr-title {
+                font-size: 2.15rem;
+                line-height: 1.08;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#f7f7f5] dark:bg-[#0f0f0f] text-[#111] dark:text-gray-100 antialiased">
+    <nav class="fixed w-full bg-white/85 dark:bg-[#0f0f0f]/90 backdrop-blur-md z-50 border-b border-gray-100/80 dark:border-zinc-800">
+        <div class="xr-nav-wrap max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
+            <a href="index.html#home" class="flex items-center gap-3 font-bold text-lg">
+                <span class="w-7 h-7 rounded-md bg-black dark:bg-white text-white dark:text-black flex items-center justify-center text-xs">M</span>
+                <span class="xr-brand-text truncate">MAHAR Digital Marketing Lad</span>
+            </a>
+            <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-400">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#design">Design</a>
+                <a href="index.html#tools">Tools</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="contact.html" class="bg-black dark:bg-zinc-100 dark:text-black text-white px-4 py-2 rounded-full text-xs font-semibold">Contact</a>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0 text-[11px] font-bold tracking-wide">
+                <button type="button" id="mobile-menu-btn" class="mobile-touch-target md:hidden px-3 py-2 rounded-lg border border-gray-200 dark:border-zinc-700 text-xs font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors" aria-expanded="false" aria-controls="mobile-menu">
+                    Menu
+                </button>
+                <button type="button" id="lang-en" class="mobile-touch-target w-9 h-9 rounded-full bg-black text-white flex items-center justify-center dark:bg-white dark:text-black ring-2 ring-transparent transition">EN</button>
+                <button type="button" id="lang-my" class="mobile-touch-target w-9 h-9 rounded-full text-gray-500 dark:text-gray-400 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-zinc-800 transition">MY</button>
+                <button type="button" id="theme-toggle" aria-label="Toggle dark mode" class="mobile-touch-target p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden border-t border-gray-200/80 dark:border-zinc-800 bg-white/95 dark:bg-[#0f0f0f]/95 backdrop-blur px-4 py-4 max-h-[min(70vh,28rem)] overflow-y-auto overscroll-contain">
+            <div class="grid grid-cols-1 gap-1 text-sm font-medium">
+                <a href="index.html#home" class="rounded-lg px-3 py-3 hover:bg-gray-100 dark:hover:bg-zinc-800">Home</a>
+                <a href="index.html#services" class="rounded-lg px-3 py-3 hover:bg-gray-100 dark:hover:bg-zinc-800">Services</a>
+                <a href="index.html#design" class="rounded-lg px-3 py-3 hover:bg-gray-100 dark:hover:bg-zinc-800">Design</a>
+                <a href="index.html#tools" class="rounded-lg px-3 py-3 hover:bg-gray-100 dark:hover:bg-zinc-800">Tools</a>
+                <a href="index.html#faq" class="rounded-lg px-3 py-3 hover:bg-gray-100 dark:hover:bg-zinc-800">FAQ</a>
+                <a href="contact.html" class="rounded-lg px-3 py-3 bg-black text-white dark:bg-zinc-100 dark:text-black text-center">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <div id="mobile-menu-backdrop" class="hidden md:hidden fixed inset-0 z-40 bg-black/45" aria-hidden="true"></div>
+
+    <main class="xr-main-pad pt-32 pb-16 px-6 max-w-7xl mx-auto">
+        <header class="text-center max-w-4xl mx-auto">
+            <h1 class="xr-title text-5xl md:text-6xl font-extrabold tracking-tight" data-i18n="contact.title">Talk to MAHAR Digital Marketing</h1>
+            <p class="mt-5 text-xl text-gray-600 dark:text-gray-300 leading-relaxed" data-i18n="contact.desc">
+                Tell us about your brand, platforms (Facebook / TikTok), and goals. We reply within two business days.
+            </p>
+        </header>
+
+        <section class="mt-12 grid lg:grid-cols-2 gap-6 items-start">
+            <div class="rounded-3xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-7 sm:p-8 shadow-sm">
+                <form class="space-y-5">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs tracking-wider uppercase font-bold text-gray-500 mb-2" for="name" data-i18n="form.name">Name</label>
+                            <input id="name" type="text" class="w-full rounded-xl border border-gray-300 dark:border-zinc-700 bg-transparent px-4 py-3 outline-none focus:ring-2 focus:ring-orange-400" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label class="block text-xs tracking-wider uppercase font-bold text-gray-500 mb-2" for="email" data-i18n="form.email">Email</label>
+                            <input id="email" type="email" class="w-full rounded-xl border border-gray-300 dark:border-zinc-700 bg-transparent px-4 py-3 outline-none focus:ring-2 focus:ring-orange-400" placeholder="Your email">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs tracking-wider uppercase font-bold text-gray-500 mb-2" for="phone" data-i18n="form.phone">Phone</label>
+                        <input id="phone" type="text" class="w-full rounded-xl border border-gray-300 dark:border-zinc-700 bg-transparent px-4 py-3 outline-none focus:ring-2 focus:ring-orange-400" placeholder="Your phone">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs tracking-wider uppercase font-bold text-gray-500 mb-3" data-i18n="form.interested">I am interested in:</label>
+                        <div class="grid sm:grid-cols-2 gap-3">
+                            <label class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-zinc-700 p-3"><input type="checkbox" class="accent-orange-500"> Facebook marketing &amp; content</label>
+                            <label class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-zinc-700 p-3"><input type="checkbox" class="accent-orange-500"> TikTok video production</label>
+                            <label class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-zinc-700 p-3"><input type="checkbox" class="accent-orange-500"> Paid media &amp; boosting</label>
+                            <label class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-zinc-700 p-3"><input type="checkbox" class="accent-orange-500"> Branding &amp; design packages</label>
+                            <label class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-zinc-700 p-3"><input type="checkbox" class="accent-orange-500"> Analytics &amp; reporting</label>
+                            <label class="flex items-center gap-3 rounded-xl border border-gray-200 dark:border-zinc-700 p-3"><input type="checkbox" class="accent-orange-500"> Other (please describe in your message)</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs tracking-wider uppercase font-bold text-gray-500 mb-2" for="message" data-i18n="form.message">Message</label>
+                        <textarea id="message" rows="5" class="w-full rounded-xl border border-gray-300 dark:border-zinc-700 bg-transparent px-4 py-3 outline-none focus:ring-2 focus:ring-orange-400" placeholder="Your message..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white py-3.5 font-bold shadow-lg shadow-orange-300/40 hover:opacity-95 transition-opacity" data-i18n="form.submit">
+                        Submit request
+                    </button>
+                </form>
+            </div>
+
+            <div class="space-y-4">
+                <div class="rounded-3xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 min-h-[360px] shadow-sm"></div>
+                <div class="rounded-3xl border border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm divide-y divide-gray-200 dark:divide-zinc-800">
+                    <div class="p-6 flex items-start gap-4">
+                        <span class="w-9 h-9 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 text-white flex items-center justify-center">⌖</span>
+                        <div>
+                            <p class="text-xs tracking-widest uppercase font-bold text-gray-500">Office</p>
+                            <p class="mt-1">Yangon Creative District<br>Studio 4B</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex items-start gap-4">
+                        <span class="w-9 h-9 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 text-white flex items-center justify-center">☏</span>
+                        <div>
+                            <p class="text-xs tracking-widest uppercase font-bold text-gray-500">Phone</p>
+                            <p class="mt-1">+95 9 781956252</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex items-start gap-4">
+                        <span class="w-9 h-9 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 text-white flex items-center justify-center">✉</span>
+                        <div>
+                            <p class="text-xs tracking-widest uppercase font-bold text-gray-500">Email</p>
+                            <p class="mt-1 text-orange-600 dark:text-orange-400">hello@mahardigitalmarketing.test</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex items-start gap-4">
+                        <span class="w-9 h-9 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 text-white flex items-center justify-center">◔</span>
+                        <div>
+                            <p class="text-xs tracking-widest uppercase font-bold text-gray-500">Hours</p>
+                            <p class="mt-1">Mon – Fri: 09:00 – 18:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-gray-200/80 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 px-6 py-14">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+            <div class="md:col-span-1">
+                <p class="font-bold text-xl text-[#111] dark:text-white">MAHAR DIGITAL<br>MARKETING LAD</p>
+                <p class="mt-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+                    MAHAR Digital Marketing — Facebook, TikTok, and performance-led campaigns for modern brands.
+                </p>
+                <div class="mt-5 flex gap-2 text-gray-500">
+                    <span class="w-9 h-9 rounded-full border border-gray-300 dark:border-zinc-700 flex items-center justify-center">f</span>
+                    <span class="w-9 h-9 rounded-full border border-gray-300 dark:border-zinc-700 flex items-center justify-center">✈</span>
+                    <span class="w-9 h-9 rounded-full border border-gray-300 dark:border-zinc-700 flex items-center justify-center">◉</span>
+                    <span class="w-9 h-9 rounded-full border border-gray-300 dark:border-zinc-700 flex items-center justify-center">♪</span>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold tracking-[0.2em] uppercase text-xs text-orange-500">Our services</h3>
+                <ul class="mt-4 space-y-2.5 text-gray-600 dark:text-gray-300">
+                    <li><a href="index.html#design" class="hover:text-orange-500 transition-colors">Design Gallery</a></li>
+                    <li><a href="index.html#tools" class="hover:text-orange-500 transition-colors">Tools we use</a></li>
+                    <li><a href="contact.html" class="hover:text-orange-500 transition-colors">Contact us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold tracking-[0.2em] uppercase text-xs text-orange-500">Quick links</h3>
+                <ul class="mt-4 space-y-2.5 text-gray-600 dark:text-gray-300">
+                    <li><a href="index.html#home" class="hover:text-orange-500 transition-colors">Home</a></li>
+                    <li><a href="index.html#services" class="hover:text-orange-500 transition-colors">Services &amp; plans</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Privacy policy</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Terms of use</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold tracking-[0.2em] uppercase text-xs text-orange-500">Contacts</h3>
+                <ul class="mt-4 space-y-3 text-gray-600 dark:text-gray-300">
+                    <li>+95 9 781956252</li>
+                    <li>hello@mahardigitalmarketing.test</li>
+                    <li>Yangon Creative District<br>Studio 4B</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-10 pt-6 border-t border-gray-200 dark:border-zinc-800 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-sm text-gray-500 dark:text-gray-400">
+            <p>© 2026 MAHAR Digital Marketing. All rights reserved.</p>
+            <p>Power By WhiteTechnology</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            lightIcon.classList.remove('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            darkIcon.classList.remove('hidden');
+        }
+        themeToggleBtn.addEventListener('click', function () {
+            darkIcon.classList.toggle('hidden');
+            lightIcon.classList.toggle('hidden');
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+        (function mobileNav() {
+            var backdrop = document.getElementById('mobile-menu-backdrop');
+            if (!mobileMenuBtn || !mobileMenu) return;
+            function setOpen(open) {
+                mobileMenu.classList.toggle('hidden', !open);
+                if (backdrop) backdrop.classList.toggle('hidden', !open);
+                document.body.classList.toggle('overflow-hidden', open);
+                mobileMenuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            }
+            function closeMenu() { setOpen(false); }
+            mobileMenuBtn.addEventListener('click', function () {
+                setOpen(mobileMenu.classList.contains('hidden'));
+            });
+            if (backdrop) backdrop.addEventListener('click', closeMenu);
+            mobileMenu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', closeMenu);
+            });
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768) closeMenu();
+            });
+        })();
+
+        (function languageToggle() {
+            const enBtn = document.getElementById('lang-en');
+            const myBtn = document.getElementById('lang-my');
+            if (!enBtn || !myBtn) return;
+
+            const translations = {
+                en: {
+                    'contact.title': 'Talk to MAHAR Digital Marketing',
+                    'contact.desc': 'Tell us about your brand, platforms (Facebook / TikTok), and goals. We reply within two business days.',
+                    'form.name': 'Name',
+                    'form.email': 'Email',
+                    'form.phone': 'Phone',
+                    'form.interested': 'I am interested in:',
+                    'form.message': 'Message',
+                    'form.submit': 'Submit request'
+                },
+                my: {
+                    'contact.title': 'MAHAR Digital Marketing ကို ဆက်သွယ်ပါ',
+                    'contact.desc': 'သင့် brand, platform (Facebook / TikTok) နှင့် ရည်မှန်းချက်များကို ပြောပြပါ။ အလုပ်လုပ်ရက် ၂ ရက်အတွင်း ပြန်လည်ဆက်သွယ်ပါမည်။',
+                    'form.name': 'အမည်',
+                    'form.email': 'အီးမေးလ်',
+                    'form.phone': 'ဖုန်း',
+                    'form.interested': 'စိတ်ဝင်စားသော ဝန်ဆောင်မှုများ:',
+                    'form.message': 'မက်ဆေ့ချ်',
+                    'form.submit': 'တောင်းဆိုချက် ပို့မည်'
+                }
+            };
+            const fullPageMapMY = {
+                'Home': 'ပင်မ',
+                'Services': 'ဝန်ဆောင်မှုများ',
+                'Design': 'ဒီဇိုင်း',
+                'Tools': 'ကိရိယာများ',
+                'FAQ': 'မေးလေ့ရှိသော မေးခွန်းများ',
+                'Contact': 'ဆက်သွယ်ရန်',
+                'Menu': 'မီနူး',
+                'Facebook marketing & content': 'Facebook marketing နှင့် content',
+                'TikTok video production': 'TikTok video production',
+                'Paid media & boosting': 'Paid media နှင့် boosting',
+                'Branding & design packages': 'Branding နှင့် design package',
+                'Analytics & reporting': 'Analytics နှင့် reporting',
+                'Other (please describe in your message)': 'အခြား (message ထဲတွင်ရေးပါ)',
+                'Office': 'ရုံးခန်း',
+                'Phone': 'ဖုန်း',
+                'Email': 'အီးမေးလ်',
+                'Hours': 'အလုပ်ချိန်',
+                'Mon – Fri: 09:00 – 18:00': 'တနင်္လာ – သောကြာ: 09:00 – 18:00',
+                'Our services': 'ဝန်ဆောင်မှုများ',
+                'Quick links': 'အမြန်လင့်ခ်များ',
+                'Contacts': 'ဆက်သွယ်ရန်',
+                'Design Gallery': 'ဒီဇိုင်းပြခန်း',
+                'Tools we use': 'အသုံးပြုသော Tools များ',
+                'Contact us': 'ဆက်သွယ်ရန်',
+                'Services & plans': 'ဝန်ဆောင်မှုနှင့် အစီအစဉ်များ',
+                'Privacy policy': 'ကိုယ်ရေးအချက်အလက် မူဝါဒ',
+                'Terms of use': 'အသုံးပြုမှု စည်းကမ်းချက်များ',
+                'Power By WhiteTechnology': 'Power By WhiteTechnology',
+                'Your name': 'သင့်အမည်',
+                'Your email': 'သင့်အီးမေးလ်',
+                'Your phone': 'သင့်ဖုန်း',
+                'Your message...': 'သင့်မက်ဆေ့ချ်...'
+            };
+
+            function setActive(lang) {
+                const isEN = lang === 'en';
+                const baseEn = 'mobile-touch-target w-9 h-9 rounded-full flex items-center justify-center ring-2 ring-transparent transition ';
+                enBtn.className = baseEn + (isEN
+                    ? 'bg-black text-white dark:bg-white dark:text-black ring-orange-300'
+                    : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-zinc-800');
+                myBtn.className = baseEn + (!isEN
+                    ? 'bg-black text-white dark:bg-white dark:text-black ring-orange-300'
+                    : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-zinc-800');
+            }
+
+            function applyLanguage(lang) {
+                const dict = translations[lang] || translations.en;
+                document.querySelectorAll('[data-i18n]').forEach((el) => {
+                    const key = el.getAttribute('data-i18n');
+                    if (dict[key]) el.textContent = dict[key];
+                });
+                document.querySelectorAll('h1,h2,h3,p,a,button,summary,label,li,th,td,span').forEach((el) => {
+                    if (el.children && el.children.length > 0) return;
+                    if (!el.dataset.enText) el.dataset.enText = el.textContent;
+                    const original = (el.dataset.enText || '').trim().replace(/\s+/g, ' ');
+                    if (lang === 'en') {
+                        el.textContent = el.dataset.enText;
+                    } else if (fullPageMapMY[original]) {
+                        el.textContent = fullPageMapMY[original];
+                    }
+                });
+                document.querySelectorAll('[placeholder]').forEach((el) => {
+                    if (!el.dataset.enPlaceholder) el.dataset.enPlaceholder = el.getAttribute('placeholder');
+                    const original = (el.dataset.enPlaceholder || '').trim();
+                    if (lang === 'en') el.setAttribute('placeholder', el.dataset.enPlaceholder);
+                    else if (fullPageMapMY[original]) el.setAttribute('placeholder', fullPageMapMY[original]);
+                });
+                localStorage.setItem('site-lang', lang);
+                setActive(lang);
+            }
+
+            enBtn.addEventListener('click', () => applyLanguage('en'));
+            myBtn.addEventListener('click', () => applyLanguage('my'));
+            applyLanguage(localStorage.getItem('site-lang') || 'en');
+        })();
+    </script>
+</body>
+</html>
